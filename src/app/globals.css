@@ -1,0 +1,34 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Font families are bound to next/font variables in layout.tsx (Sora for
+     headings — the marketing-safe substitute for Calibri Light named in SRS
+     Volume 2 Ch.6 — Roboto for body/UI, Roboto Mono for tabular/financial figures). */
+  --font-heading: var(--font-sora), system-ui, sans-serif;
+  --font-body: var(--font-roboto), system-ui, sans-serif;
+  --font-mono: var(--font-roboto-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  body {
+    @apply bg-background text-neutral-900 font-body antialiased;
+  }
+  h1, h2, h3, h4 {
+    @apply font-heading;
+  }
+  :focus-visible {
+    @apply outline outline-2 outline-offset-2 outline-primary-500;
+  }
+}
+
+@layer utilities {
+  .scrollbar-thin::-webkit-scrollbar {
+    width: 6px;
+  }
+  .scrollbar-thin::-webkit-scrollbar-thumb {
+    background-color: theme("colors.neutral.200");
+    border-radius: 9999px;
+  }
+}
